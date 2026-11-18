@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
@@ -17,3 +17,6 @@ def clubes(numero: int):
     for time in times:
         if numero == time["id"]:
             return time["nome"]
+    #pra se  der erro
+    raise HTTPException(status_code=404, detail="Time não encontrado")
+
